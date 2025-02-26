@@ -11,7 +11,7 @@
                      Orientation="Horizontal">
 
             <Frame Padding="10"
-                   BorderRadius="35"
+                   CornerRadius="35"
                    HasShadow="True"
                    BorderColor="LightBlue">
 
@@ -19,7 +19,14 @@
                   FontSize="Default"/>
 
             </Frame>
+
+            <ImageButton Source="search.png"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         HorizontalOptions="EndAndExpand"/>
             
+
+
         </StackLayout>
         
     </Grid>
