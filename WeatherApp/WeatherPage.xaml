@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WeatherApp.WeatherPage"
              Title="WeatherPage">
+
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
           RowSpacing="20">
 
@@ -10,24 +11,110 @@
                      Margin="20,20,20,0"
                      Orientation="Horizontal">
 
-            <Frame Padding="10"
-                   CornerRadius="35"
-                   HasShadow="True"
-                   BorderColor="LightBlue">
+            <Border Stroke="LightBlue"
+                    StrokeThickness="2"
+                    Background="White"
+                    Padding="10">
 
                 <Label Text="Your Location"
-                  FontSize="Default"/>
-
-            </Frame>
+                       FontSize="Default"/>
+            </Border>
 
             <ImageButton Source="search.png"
                          HeightRequest="30"
                          WidthRequest="30"
                          HorizontalOptions="EndAndExpand"/>
-            
-
-
         </StackLayout>
-        
+
+        <StackLayout Grid.Row="1"
+                     Orientation="Vertical">
+            <Label x:Name="lbCity"
+                   FontSize="40"
+                   HorizontalOptions="Center"
+                   TextColor="CadetBlue"
+                   Text="Dublin"/>
+            <Label x:Name="lbWeatherDesc"
+                   FontSize="Medium"
+                   HorizontalOptions="Center"
+                   TextColor="CadetBlue"
+                   Text="Dublin"/>
+        </StackLayout>
+
+        <Image Grid.Row="2"
+               x:Name="imgWeatherIcon"
+               VerticalOptions="Start"
+               HeightRequest="300"
+               WidthRequest="300"
+               Source="nigh_fog.png" />
+
+        <Grid Grid.Row="3" 
+              RowDefinitions="Auto,Auto" 
+              ColumnDefinitions="0.33*,0.33*,0.33*" 
+              Margin="20">
+
+            <Image Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalOptions="Center"
+                   HeightRequest="25"
+                   Source="humidity.png"/>
+
+            <Label x:Name="lbHumidity"
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   HorizontalOptions="Center"
+                   Text="88"/>
+
+            <Label x:Name="lbTemperature"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   HorizontalOptions="Center"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   Text="25"/>
+
+            <Image Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalOptions="Center"
+                   HeightRequest="25"
+                   Source="wind.png"/>
+
+            <Label x:Name="lbWind"
+                   Grid.Row="1"
+                   Grid.Column="2"
+                   HorizontalOptions="Center"
+                   Text="88"/>
+        </Grid>
+
+        <CollectionView Grid.Row="4" x:Name="cvWeather" HeightRequest="100">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal"
+                                   ItemSpacing="20" />
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Grid.Row="4" RowDefinitions="Auto, Auto, Auto">
+                        <Image Grid.Row="0"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Start"
+                               HeightRequest="50"
+                               WidthRequest="50" />
+
+                        <Label Grid.Row="1"
+                               FontSize="Large"
+                               HorizontalOptions="Center" />
+
+                        <Label Grid.Row="2"
+                               FontSize="Small"
+                               HorizontalOptions="Center" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </Grid>
+
+
+
 </ContentPage>
